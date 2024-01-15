@@ -7,10 +7,12 @@ use App\Models\Paciente;
 
 class PacienteController extends Controller
 {
+        
     /**
-     * Display a listing of the resource.
+     * Exibe a página principal com a lista de pacientes.
      *
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
     public function Index(Request $request)
     {
@@ -18,21 +20,23 @@ class PacienteController extends Controller
         return view('app.paciente.index', ['pacientes' => $pacientes, 'request' => $request->all()]);
     }
 
+       
     /**
-     * Show the form for creating a new resource.
+     * Exibe o formulário para criar um novo paciente.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
         return view('app.paciente.create');
     }
 
+       
     /**
-     * Store a newly created resource in storage.
+     * Armazena um novo paciente no banco de dados.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -78,11 +82,12 @@ class PacienteController extends Controller
         return redirect()->route('paciente.index');
     }
 
+        
     /**
-     * Display the specified resource.
+     * Exibe as informações detalhadas de um paciente específico.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id - ID do paciente.
+     * @return void
      */
     public function show($id)
     {
@@ -90,11 +95,12 @@ class PacienteController extends Controller
         return view('app.paciente.show', ['paciente' => $paciente]);
     }
 
+        
     /**
-     * Remove the specified resource from storage.
+     * Exclui um paciente do banco de dados.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id - ID do paciente a ser excluído.
+     * @return void
      */
     public function destroy($id)
     {

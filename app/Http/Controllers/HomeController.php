@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
-{
+{    
+    /**
+     * Exibe a página inicial do sistema com a lista de consultas agendadas.
+     *
+     * @return void
+     */
     public function Index(){
         $consultas = DB::table('consultas')
                     ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')

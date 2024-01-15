@@ -8,33 +8,34 @@ use App\Models\Especialidade;
 
 class MedicoController extends Controller
 {
+    
     /**
-     * Display a listing of the resource.
+     * Exibe a página principal com a lista de médicos.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
         $medico = Medico::get();
         return view('app.medico.listar', ['medicos' => $medico]);
     }
-
+    
     /**
-     * Show the form for creating a new resource.
+     * Exibe o formulário para adicionar um novo médico.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
         $especialidades = Especialidade::all();
         return view('app.medico.adicionar', ['especialidades' => $especialidades]);
     }
-
+    
     /**
-     * Store a newly created resource in storage.
+     * Armazena um novo médico no banco de dados.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -60,12 +61,12 @@ class MedicoController extends Controller
 
         return redirect()->route('medico.index');
     }
-
+    
     /**
-     * Remove the specified resource from storage.
+     * Exclui um médico do banco de dados.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id
+     * @return void
      */
     public function destroy($id)
     {

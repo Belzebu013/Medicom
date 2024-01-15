@@ -8,7 +8,16 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class LoginController extends Controller
-{
+{    
+    /**
+     * Exibe a página de login.
+     *
+     * @param  mixed $request Objeto da requisição HTTP.
+     * @param  mixed $erro Código de erro opcional para mensagens de erro.
+     *                      - 1: Usuário ou senha não existe.
+     *                      - 2: Necessário realizar login para acessar a página.
+     * @return void
+     */
     public function Index(Request $request, $erro = null){
         switch($erro){
             case 1:
@@ -24,16 +33,20 @@ class LoginController extends Controller
 
         return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
     }
-
+    
+    /**
+     * Processa o cadastro de um novo usuário.
+     *
+     * @param  mixed Request $request Objeto da requisição HTTP.
+     * @return void
+     */
     public function Cadastrar(Request $request){
-        //regras de validação
         $regras = [
             'name' => 'required',
             'email' => 'email',
             'password' => 'required',
         ];
 
-        //mensagem de feedback de validação
         $feedback = [
             'name' => 'O campo nome é obrigatório',
             'email' => 'O campo e-mail é obrigatório',
@@ -50,16 +63,21 @@ class LoginController extends Controller
 
         return view('site.login', ['titulo' => 'Login', 'cadastrado' => 1]);    
     }
-
+    
+    /**
+     * Autentica um usuário e redireciona para a página de home se autenticado, 
+     * caso contrário, redireciona de volta para a página de login com erro.
+     *
+     * @param  mixed $request
+     * @return void 
+     */
     public function Autenticar(Request $request){
 
-        //regras de validação
         $regras = [
             'usuario' => 'required|email',
             'password' => 'required',
         ];
         
-        // Mensagem de feedback de validação
         $feedback = [
             'usuario.required' => 'O campo e-mail é obrigatório',
             'usuario.email' => 'O campo e-mail deve ser um endereço de e-mail válido',
@@ -79,9 +97,13 @@ class LoginController extends Controller
         }
     }
 
-public function sair()
-{
-    Auth::logout();
-    return redirect()->route('site.login');
-}
+    /**
+     * Realiza o logout do usuário autenticado e redireciona para a página de login após o logout.
+     *
+     * @return void 
+     */
+    public function sair(){
+        Auth::logout();
+        return redirect()->route('site.login');
+    }
 }

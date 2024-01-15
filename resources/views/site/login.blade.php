@@ -19,13 +19,11 @@
                                     <input name="usuario" value="{{ old('usuario') }}" type="text" class="form-control">
                                     <div class="text-danger">{{ $errors->has('usuario') ? $errors->first('usuario') : '' }}</div>
                                 </div>
-                
                                 <div class="mb-3" style="text-align: left">
                                     <label style="margin-bottom: 0px" for="password" class="form-label">Senha</label>
                                     <input name="password" value="{{ old('password') }}" type="password" class="form-control">
                                     <div class="text-danger">{{ $errors->has('password') ? $errors->first('password') : '' }}</div>
                                 </div>
-                
                                 <button type="submit" class="btn btn-dark">Acessar</button>
                             </form>
                             {{{isset($erro) && $erro != '' ? $erro : ''}}}

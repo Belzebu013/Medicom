@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\DB;
 class ConsultaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Exibe a página principal com a lista de consultas.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
@@ -27,27 +27,26 @@ class ConsultaController extends Controller
         foreach ($consultas as $consulta) {
             $consulta->data_hora_consulta = Carbon::createFromFormat('Y-m-d H:i:s', $consulta->data_hora_consulta)->format('d/m/Y H:i:s');
             $consulta->data_agendamento = Carbon::createFromFormat('Y-m-d', $consulta->data_agendamento)->format('d/m/Y');
-
         }
         return view('app.consulta.index', ['consultas' => $consultas]);
     }
-
+    
     /**
-     * Show the form for creating a new resource.
+     * Exibe o formulário para criar uma nova consulta.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
         $especialidades = Especialidade::all();
         return view('app.consulta.create', ['especialidades'=> $especialidades]);
     }
-
+    
     /**
-     * Store a newly created resource in storage.
+     * Armazena uma nova consulta no banco de dados.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -124,12 +123,12 @@ class ConsultaController extends Controller
      
         return $medicos;
     }
-
+    
     /**
-     * Remove the specified resource from storage.
+     * Exclui uma consulta do banco de dados.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id
+     * @return void
      */
     public function destroy($id)
     {

@@ -7,34 +7,34 @@ use App\Models\Especialidade;
 
 
 class EspecialidadeController extends Controller
-{
+{    
     /**
-     * Display a listing of the resource.
+     * Exibe a página principal com a lista de especialidades.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
         $especialidades = Especialidade::get();
         return view('app.especialidade.listar', ['especialidades' => $especialidades]);
     }
-
+    
     /**
-     * Show the form for creating a new resource.
+     * Exibe o formulário para adicionar uma nova especialidade.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
         $especialidades = Especialidade::get();
         return view('app.especialidade.adicionar', ['especialidades'=>$especialidades]);
     }
-
+    
     /**
-     * Store a newly created resource in storage.
+     * Armazena uma nova especialidade no banco de dados.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -52,12 +52,12 @@ class EspecialidadeController extends Controller
 
         return redirect()->route('especialidade.index');
     }
-
+    
     /**
-     * Remove the specified resource from storage.
+     * Exclui uma especialidade do banco de dados.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id
+     * @return void
      */
     public function destroy($id)
     {

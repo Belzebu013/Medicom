@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('site.login');
 });
+
 Route::get('/login/{erro?}', [\App\Http\Controllers\LoginController::class, 'Index'])
     ->name('site.login');
 
@@ -25,20 +26,20 @@ Route::post('/cadastrar', [\App\Http\Controllers\LoginController::Class,'Cadastr
 Route::post('/autenticar', [\App\Http\Controllers\LoginController::Class,'Autenticar'])
     ->name('site.autenticar');
 
-    Route::prefix('/app')->group(function(){
+Route::prefix('/app')->group(function(){
 
-        Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])
-            ->name('app.home');
-    
-        Route::get('/sair', [\App\Http\Controllers\LoginController::class, 'sair'])
-            ->name('app.sair');
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])
+        ->name('app.home');
 
-        Route::resource('/paciente', App\Http\Controllers\PacienteController::class);
-            
-        Route::resource('/medico', App\Http\Controllers\MedicoController::class);
+    Route::get('/sair', [\App\Http\Controllers\LoginController::class, 'sair'])
+        ->name('app.sair');
 
-        Route::resource('/consulta', App\Http\Controllers\ConsultaController::class);
+    Route::resource('/paciente', App\Http\Controllers\PacienteController::class);
+        
+    Route::resource('/medico', App\Http\Controllers\MedicoController::class);
 
-        Route::resource('/especialidade', App\Http\Controllers\EspecialidadeController::class);    
-    });
+    Route::resource('/consulta', App\Http\Controllers\ConsultaController::class);
+
+    Route::resource('/especialidade', App\Http\Controllers\EspecialidadeController::class);    
+});
     
