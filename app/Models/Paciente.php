@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
     use HasFactory;
+    
+     /**
+     * Atributos que podem ser preenchidos em massa.
+     *
+     * @var array
+     */
     protected $fillable = [
         'nome', 
         'cpf',
