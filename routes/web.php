@@ -43,7 +43,7 @@ Route::post('/autenticar', [\App\Http\Controllers\LoginController::Class,'Autent
 /**
  * Grupo de rotas prefixadas para a área do sistema interno ('/app').
  */
-Route::prefix('/app')->group(function(){
+Route::middleware(['check.auth'])->prefix('/app')->group(function(){
 
     /**
      * Rota para exibir a página inicial do aplicativo.
@@ -77,4 +77,10 @@ Route::prefix('/app')->group(function(){
      */
     Route::resource('/especialidade', App\Http\Controllers\EspecialidadeController::class);    
 });
-    
+
+/**
+* Caso acesse uma rota inexistente ira enviar para login.
+*/
+Route::fallback(function () {
+    return redirect()->route('site;login');
+});    
