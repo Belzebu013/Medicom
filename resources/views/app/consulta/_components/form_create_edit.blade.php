@@ -239,6 +239,7 @@
                 especialidade: $('select[name="especialidade_id"]').val()
             },
             success: function (data) {
+                console.log(data)
                 if(data.length < 1){
                     $('#medicoNaoEncontrado').html('Médico não encontrado!');
                     $('#resultadoPesquisa_medico').addClass('ocultar');

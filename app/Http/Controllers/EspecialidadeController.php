@@ -16,7 +16,7 @@ class EspecialidadeController extends Controller
     public function index()
     {
         $especialidades = Especialidade::get();
-        return view('app.especialidade.listar', ['especialidades' => $especialidades]);
+        return view('app.especialidade.listar', ['especialidades' => $especialidades, 'erro'=>0]);
     }
     
     /**
@@ -61,7 +61,19 @@ class EspecialidadeController extends Controller
      */
     public function destroy($id)
     {
-        Especialidade::find($id)->delete();
+        $especialidades = Especialidade::get();
+        try {
+            $especialidade = Especialidade::findOrFail($id);
+    
+            if ($especialidade->medicos->isEmpty()) {
+                $especialidade->delete();
+            } else {
+                return view('app.especialidade.listar', ['especialidades' => $especialidades, 'erro'=>1]);
+            }
+        } catch (\Exception $e) {
+            return view('app.especialidade.listar', ['especialidades' => $especialidades, 'erro'=>1]);
+        }
+    
         return redirect()->route('especialidade.index');
     }
 }

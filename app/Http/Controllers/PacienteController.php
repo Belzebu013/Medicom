@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Models\Consulta;
 
 class PacienteController extends Controller
 {
@@ -14,10 +15,10 @@ class PacienteController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function Index(Request $request)
+    public function Index()
     {
         $pacientes = Paciente::get();
-        return view('app.paciente.index', ['pacientes' => $pacientes, 'request' => $request->all()]);
+        return view('app.paciente.index', ['pacientes' => $pacientes, 'erro' => 0]);
     }
 
        
@@ -104,7 +105,18 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        Paciente::find($id)->delete();
+        $pacientes = Paciente::get();
+        try {
+            $paciente_consulta = Consulta::where('paciente_id', $id)->get();
+            if ($paciente_consulta->isEmpty()) {
+                Paciente::find($id)->delete();
+            } else {
+                return view('app.paciente.index', ['pacientes' => $pacientes, 'erro' => 1]);
+            }
+        } catch (\Exception $e) {
+            return view('app.paciente.index', ['pacientes' => $pacientes, 'erro' => 1]);
+        }
+    
         return redirect()->route('paciente.index');
     }
 }

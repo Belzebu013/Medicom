@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-4 responsavel" style="display: none;">
                 <label for="nome_responsavel" class="form-label">Nome do Responsável</label>
-                <input type="text" id="nome_responsavel" name="nome_responsavel" maxlength="11" class="form-control" value="{{ $paciente->cpf ?? old('nome_responsavel')}}">
+                <input type="text" id="nome_responsavel" name="nome_responsavel" class="form-control" value="{{ $paciente->cpf ?? old('nome_responsavel')}}">
                 <div class="text-danger">{{ $errors->has('nome_responsavel') ? $errors->first('nome_responsavel') : ''}}</div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'paciente')
+@section('titulo', 'Paciente')
 
 @section('conteudo')
 
@@ -20,29 +20,28 @@
    
    <div class="informacao-pagina" style="width: 100%; display: flex; justify-content: center; align-items: center;">
       <div style="width: 400px; margin-top: 30px;">
-         @if(!$paciente->isEmpty())
-            <table border="1" style="text-align: left;" class="table table-hover">
+         <table border="1" style="text-align: left;" class="table table-hover">
+            <tr>
+               <td>ID:</td>
+               <td>{{ $paciente->id}}</td>
+            </tr>
+            <tr>
+               <td>Nome:</td>
+               <td>{{ $paciente->nome}}</td>
+            </tr>
+            <tr>
+               <td>{{ !empty($paciente->cpf_responsavel) ? 'Cpf do responsável' : 'Cpf'}}:</td>
+               <td>{{ !empty($paciente->cpf_responsavel) ? $paciente->cpf_responsavel : $paciente->cpf}}</td>
+            </tr>
+            @if(!empty($paciente->nome_responsavel))
                <tr>
-                  <td>ID:</td>
-                  <td>{{ $paciente->id}}</td>
+                  <td>Nome do responsável:</td>
+                  <td>{{$paciente->nome_responsavel}}</td>
                </tr>
-               <tr>
-                  <td>Nome:</td>
-                  <td>{{ $paciente->nome}}</td>
-               </tr>
-               <tr>
-                  <td>{{ !empty($paciente->cpf_responsavel) ? 'Cpf do responsável' : 'Cpf'}}:</td>
-                  <td>{{ !empty($paciente->cpf_responsavel) ? $paciente->cpf_responsavel : $paciente->cpf}}</td>
-               </tr>
-               @if(!empty($paciente->nome_responsavel))
-                  <tr>
-                     <td>Nome do responsável:</td>
-                     <td>{{$paciente->nome_responsavel}}</td>
-                  </tr>
-               @endif
-               <tr>
-                  <td>Data de nascimento:</td>
-                  <td>{{ \Carbon\Carbon::parse($paciente->data_nascimento)->format('d/m/Y') }}</td>
+            @endif
+            <tr>
+               <td>Data de nascimento:</td>
+               <td>{{ \Carbon\Carbon::parse($paciente->data_nascimento)->format('d/m/Y') }}</td>
             </tr>
                <tr>
                   <td>Telefone:</td>
@@ -59,11 +58,8 @@
             <tr>
                <td>Número:</td>
                <td>{{ $paciente->numero}}</td>
-         </tr>
+            </tr>
          </table>
-        @else
-         <div>Nenhum registro cadastrado</div>
-      @endif
       </div>
    </div>
 </div> 

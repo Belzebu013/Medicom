@@ -48,6 +48,9 @@
         @else
             <div>Nenhum registro cadastrado</div>
         @endif
+        @if($erro)
+            <h5>Não é possível excluir a especialidade, pois está associada a pelo menos um médico</h5>
+        @endif
       </div>
    </div>
 </div> 

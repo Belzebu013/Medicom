@@ -50,6 +50,9 @@
         @else
             <div>Nenhum registro cadastrado</div>
         @endif
+        @if($erro)
+            <h5>Não é possível excluir o médico, pois está associado a pelo menos uma consulta</h5>
+        @endif
       </div>
    </div>
 </div> 

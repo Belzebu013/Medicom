@@ -78,8 +78,9 @@ class ConsultaController extends Controller
         if(!empty($request->get('especialidade_id'))){
             $especialidade = Especialidade::where('nome', 'LIKE', 'Pediatria')
                                         ->orWhere('nome', 'LIKE', 'Pediatra')
-                                        ->first();
-            return $especialidade->id;
+                                        ->get();
+            $ids = $especialidade->pluck('id')->all();
+            return $ids;
         }
 
         if(!empty($request->get('cpf'))){

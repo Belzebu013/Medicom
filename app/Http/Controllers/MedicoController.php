@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Medico;
 use App\Models\Especialidade;
+use App\Models\Consulta;
 
 class MedicoController extends Controller
 {
@@ -16,8 +17,8 @@ class MedicoController extends Controller
      */
     public function index()
     {
-        $medico = Medico::get();
-        return view('app.medico.listar', ['medicos' => $medico]);
+        $medicos = Medico::get();
+        return view('app.medico.listar', ['medicos' => $medicos, 'erro' => 0]);
     }
     
     /**
@@ -61,16 +62,21 @@ class MedicoController extends Controller
 
         return redirect()->route('medico.index');
     }
-    
-    /**
-     * Exclui um médico do banco de dados.
-     *
-     * @param  mixed $id
-     * @return void
-     */
+
     public function destroy($id)
     {
-        Medico::find($id)->delete();
+        $medicos = Medico::get();
+        try {
+            $medico_consulta = Consulta::where('medico_id', $id)->get();
+            if ($medico_consulta->isEmpty()) {
+                Medico::find($id)->delete();
+            } else {
+                return view('app.medico.listar', ['medicos' => $medicos, 'erro' => 1]);
+            }
+        } catch (\Exception $e) {
+            return view('app.medico.listar', ['medicos' => $medicos, 'erro' => 1]);
+        }
+    
         return redirect()->route('medico.index');
     }
 }
