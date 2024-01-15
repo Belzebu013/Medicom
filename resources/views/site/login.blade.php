@@ -9,7 +9,7 @@
                 <img style="height: 100%" src="{{ asset('img/wallpaper_login.png') }}" class="img-fluid w-100" alt="Imagem de Login">
             </div>
             <div class="col-md-4">
-                <div style="display: flex; align-items: center; justify-content: center; margin-top: 100px"><img src="{{asset('img/medcom.svg')}}" style="width: 50%px; height: 80px;"></div>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 100px"><a href="{{route('site.login')}}"><img src="{{asset('img/medcom.svg')}}" style="width: 50%px; height: 80px;"></a></div>
                 <div class="informacao-pagina" style="margin-top: 20px;">
                     <div class="informacao-pagina">
                         <div style="width: 80%; margin-left: auto; margin-right: auto"> 

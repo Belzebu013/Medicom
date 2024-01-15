@@ -288,23 +288,23 @@
      * @returns {void}
      */
     function selecionaMedico(id) {
-            $.ajax({
-                type: 'POST',
-                url: '{{ route("consulta.store") }}',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    medico: id
-                },
-                success: function (data) {
-                    $('#medico').val(data.nome+ ' - ' + data.crm);
-                    $('#medico_id').val(data.id);
-                    $('#fechar_medico_modal').click();
-                    $('#modalPesquisaMedico').removeClass('ocultar');
-                    $('#inputMedicoForm').removeClass('ocultar');
-                    $('#dt_consulta').removeClass('ocultar');
-                    $('#inputDataAgendamentoForm').removeClass('ocultar');
-                }
-            }); 
+        $.ajax({
+            type: 'POST',
+            url: '{{ route("consulta.store") }}',
+            data: {
+                _token: '{{ csrf_token() }}',
+                medico: id
+            },
+            success: function (data) {
+                $('#medico').val(data.nome+ ' - ' + data.crm);
+                $('#medico_id').val(data.id);
+                $('#fechar_medico_modal').click();
+                $('#modalPesquisaMedico').removeClass('ocultar');
+                $('#inputMedicoForm').removeClass('ocultar');
+                $('#dt_consulta').removeClass('ocultar');
+                $('#inputDataAgendamentoForm').removeClass('ocultar');
+            }
+        }); 
     };
 
     $('#dataAgendamento').on('change', function(){
