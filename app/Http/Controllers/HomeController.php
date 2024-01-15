@@ -23,7 +23,7 @@ class HomeController extends Controller
                     ->get();
         foreach ($consultas as $consulta) {
             $consulta->data_agendamento = Carbon::createFromFormat('Y-m-d', $consulta->data_agendamento)
-                ->format('d-m-Y');
+                ->format('d/m/Y');
         }
         return view('app.home', ['consultas' => $consultas]);
     }

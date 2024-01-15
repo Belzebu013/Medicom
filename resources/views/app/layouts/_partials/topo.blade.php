@@ -1,7 +1,7 @@
 <div class="topo">
 
 <div class="logo">
-    <img src="{{asset('img/logo.png')}}">
+    <a href="{{ route('app.home') }}"><img src="{{asset('img/medcom.svg')}}" style="width: 100px; height: 50px;"></a>
 </div>
 
 <div class="menu">

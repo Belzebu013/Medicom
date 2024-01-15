@@ -4,7 +4,6 @@
         <title>Super Gestão - @yield('titulo')</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="{{asset('css/estilo_basico.css')}}">
-        <script src="{{ asset('js/funcoesConsultas.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy/2WpBEQkGCOnxFxKCFBhXjQ+o5Z9bZI" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -23,6 +22,5 @@
     <body>
         @include('app.layouts._partials.topo')
         @yield('conteudo')
-
     </body>
 </html> 

@@ -31,7 +31,6 @@
                         <th>Hora</th>
                         <th>Agendada em</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +49,6 @@
                                     <a href="#" onclick="document.getElementById('form_{{$consulta->id}}').submit()">Excluir</a>
                                 </form>
                             </td>
-                            <td><a href="#" onclick="window.print();">Imprimir</a></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -11,9 +11,8 @@
             <div class="col-md-12">
                <div class="row row-cols-1 row-cols-md-2 g-4">
                   @foreach($consultas as $consulta)
-                     <div class="col" style="width: 33.33%;">
-                        <div class="card">
-                           <div class="card-body" style="text-align: left">
+                     <div class="col" style="width: 33.33%;" style="background-color: #2a9ee2">
+                        <div class="card" style="border: 1px solid #2a9ee2;">                           <div class="card-body" style="text-align: left">
                               <p class="card-title">{{$consulta->id}}</p>
                               <h5 class="card-text">Paciente: <strong>{{$consulta->nome_paciente}}</strong></h5>
                               <h5 class="card-text">Médico: {{$consulta->nome_medico}}</h5>

@@ -5,14 +5,14 @@
             <form>
                 <div class="form-group" style="padding: 8px;">
                     <label for="pacienteSelect">Selecione um Paciente:</label>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pesquisaPacienteModal">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#pesquisaPacienteModal">
                         Pesquisar Paciente
                     </button>
                 </div>
         
                 <div class="form-group ocultar" style="padding: 8px;" id="modalPesquisaMedico">
                     <label for="medicoSelect">Selecione um Médico:</label>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pesquisaMedicoModal">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#pesquisaMedicoModal">
                         Pesquisar Médico
                     </button>
                 </div>
@@ -148,11 +148,17 @@
         </div>
     </div>
 </div>
-
 <script>
     const fusoHorarioBrasil = 'America/Sao_Paulo';
     const dataHoraBrasil = new Date().toLocaleString('en-US', { timeZone: fusoHorarioBrasil });
     $('#data_hora_consulta').val(dataHoraBrasil);
+
+    /**
+     * Função para pesquisar um paciente usando AJAX.
+     * @function
+     * @param {Evento} event - O evento que aciona a função.
+     * @returns {void}
+     */
     function pesquisarPaciente(event) {
         event.preventDefault();
         $.ajax({
@@ -193,6 +199,12 @@
         });
     }
 
+    /**
+     * Selecionar um paciente.
+     * @function
+     * @param {number} id - O ID do paciente selecionado.
+     * @returns {void}
+     */
     function selecionaPaciente(id) {
         $.ajax({
             type: 'POST',
@@ -228,6 +240,12 @@
         }); 
     };
 
+    /**
+     * Pesquisar um médico usando AJAX.
+     * @function
+     * @param {Evento} event - O evento que aciona a função.
+     * @returns {void}
+     */
     function pesquisarMedico(event) {
         event.preventDefault();
         $.ajax({
@@ -263,6 +281,12 @@
         });
     }
 
+    /**
+     * Selecionar um médico.
+     * @function
+     * @param {number} id - O ID do médico selecionado.
+     * @returns {void}
+     */
     function selecionaMedico(id) {
             $.ajax({
                 type: 'POST',
@@ -296,8 +320,15 @@
         $('#salvar_form_consulta').prop('disabled', false);
     })
 
+    /**
+     * Formata uma data do formato padrão para o formato brasileiro.
+     * @function
+     * @param {string} dataFormatoPadrao - A data no formato padrão.
+     * @returns {string} A data no formato brasileiro.
+     */
     function formatarDataBrasileira(dataFormatoPadrao) {
         var partesData = dataFormatoPadrao.split("-");
         return partesData[2] + '/' + partesData[1] + '/' + partesData[0];
     }
+
 </script>
