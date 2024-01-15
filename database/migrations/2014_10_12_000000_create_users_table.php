@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+        
     /**
-     * Run the migrations.
+     * Executa as operações de migração.
      *
      * @return void
      */
@@ -23,9 +24,9 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
+    
     /**
-     * Reverse the migrations.
+     * Reverte as operações de migração.
      *
      * @return void
      */
