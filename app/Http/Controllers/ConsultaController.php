@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Models\Consulta;
 use App\Models\Paciente;
 use App\Models\Especialidade;
 use App\Models\Medico;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class ConsultaController extends Controller
 {
@@ -19,11 +19,7 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        $consultas = DB::table('consultas')
-                    ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')
-                    ->join('medicos', 'medicos.id', '=', 'consultas.medico_id')
-                    ->select('consultas.*', 'pacientes.nome as nome_paciente', 'medicos.nome as nome_medico')
-                    ->get();
+        $consultas = (new Consulta)->carregaConsultasDB();
         foreach ($consultas as $consulta) {
             $consulta->data_hora_consulta = Carbon::createFromFormat('Y-m-d H:i:s', $consulta->data_hora_consulta)->format('d/m/Y H:i:s');
             $consulta->data_agendamento = Carbon::createFromFormat('Y-m-d', $consulta->data_agendamento)->format('d/m/Y');
@@ -61,11 +57,7 @@ class ConsultaController extends Controller
                 'data_hora_consulta' => $datahoraConsultaBanco,
             ]);
 
-            $consultas = DB::table('consultas')
-                ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')
-                ->join('medicos', 'medicos.id', '=', 'consultas.medico_id')
-                ->select('consultas.*', 'pacientes.nome as nome_paciente', 'medicos.nome as nome_medico')
-                ->get();
+            $consultas = (new Consulta)->carregaConsultasDB();
 
             foreach ($consultas as $consulta) {
                 $consulta->data_hora_consulta = Carbon::createFromFormat('Y-m-d H:i:s', $consulta->data_hora_consulta)->format('d/m/Y H:i:s');
@@ -134,11 +126,7 @@ class ConsultaController extends Controller
     public function destroy($id)
     {
         Consulta::find($id)->delete();
-        $consultas = DB::table('consultas')
-                ->join('pacientes', 'pacientes.id', '=', 'consultas.paciente_id')
-                ->join('medicos', 'medicos.id', '=', 'consultas.medico_id')
-                ->select('consultas.*', 'pacientes.nome as nome_paciente', 'medicos.nome as nome_medico')
-                ->get();
+        $consultas = (new Consulta)->carregaConsultasDB();
         return view('app.consulta.index', ['consultas' => $consultas]);
     }
 }
