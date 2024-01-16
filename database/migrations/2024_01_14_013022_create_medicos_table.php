@@ -22,6 +22,10 @@ return new class extends Migration
 
             $table->foreign('especialidade_id')->references('id')->on('especialidades');
         });
+
+        Schema::table('medicos', function (Blueprint $table) {
+            $table->dropForeign(['especialidade_id']);
+        });
     }
 
     /**
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicos_');
+        Schema::dropIfExists('medicos');
     }
 };
