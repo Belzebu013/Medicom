@@ -28,93 +28,6 @@
                 </div>
             </form>
         </div>
-        
-        <!-- Modal de Pesquisa de Médico -->
-        <div class="modal fade" id="pesquisaMedicoModal" tabindex="-1" role="dialog" aria-labelledby="pesquisaMedicoModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="pesquisaMedicoModalLabel">Pesquisa de Médico</h5>
-                        <button type="button" class="close btn btn-light" data-dismiss="modal" aria-label="Fechar" style="width: 20%;" id="fechar_medico_modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group alinharesquerda-padding10">
-                                <label for="crmPesquisa">CRM:</label>
-                                <input type="text" class="form-control" id="crmPesquisa" placeholder="Digite o CRM">
-                            </div>
-                            <div class="form-group alinharesquerda-padding10">
-                                <label for="especialidadePesquisa">Especialidade:</label>
-                                <select name="especialidade_id" class="form-control">
-                                    <option value="" style="text-align: center" disabled selected>-- Selecione a Especialidade --</option>
-                                    @foreach ($especialidades as $especialidade)
-                                       <option value="{{ $especialidade->id }}" {{old('especialidade_id') == $especialidade->id  ? 'selected' : ''}}>{{ $especialidade->nome }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary"  onclick="pesquisarMedico(event)">Pesquisar</button>
-                        </form>
-                        <div id="medicoNaoEncontrado"></div>
-                        <div id="resultadoPesquisa_medico" class="ocultar">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>CRM</th>
-                                        <th>Especialidade</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tabelaResultados_medico">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal de Pesquisa de Paciente -->
-        <div class="modal fade" id="pesquisaPacienteModal" tabindex="-1" role="dialog" aria-labelledby="pesquisaPacienteModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="pesquisaPacienteModalLabel">Pesquisa de Paciente</h5>
-                        <button type="button" class="close btn btn-light" data-dismiss="modal" aria-label="Fechar" style="width: 20%;" id="fechar_paciente_modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group alinharesquerda-padding10">
-                                <label for="cpfPesquisa">CPF:</label>
-                                <input type="text" class="form-control" id="cpfPesquisa" placeholder="Digite o CPF" maxlength="11">
-                            </div>
-                            <button type="submit" class="btn btn-primary" onclick="pesquisarPaciente(event)">Pesquisar</button>
-                        </form>
-                        <div id="pacienteNaoEncontrado"></div>
-                        <div id="resultadoPesquisa" class="ocultar">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>CPF</th>
-                                        <th id="resp_paciente">Nome do Responsável</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tabelaResultados">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Lado Direito - Formulário -->
         <div class="col-md-6">
@@ -147,6 +60,8 @@
             </div>
         </div>
     </div>
+    @include('app.consulta.modals.medico_modal')
+    @include('app.consulta.modals.paciente_modal')
 </div>
 <script>
     const fusoHorarioBrasil = 'America/Sao_Paulo';
