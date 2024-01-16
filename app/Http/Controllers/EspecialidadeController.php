@@ -47,6 +47,7 @@ class EspecialidadeController extends Controller
             'nome.min' => 'minimo de 3 caracteres',
             'nome.max' => 'max de 80 caracteres',
         ];
+
         $request->validate($regras, $feedback);
         Especialidade::create($request->all());
 
@@ -64,7 +65,6 @@ class EspecialidadeController extends Controller
         $especialidades = Especialidade::get();
         try {
             $especialidade = Especialidade::findOrFail($id);
-    
             if ($especialidade->medicos->isEmpty()) {
                 $especialidade->delete();
             } else {

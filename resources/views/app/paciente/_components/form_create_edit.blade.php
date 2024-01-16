@@ -6,12 +6,12 @@
             <form method="post" action="{{ route('paciente.store')}}">
                 @csrf
         @endif
-        <div class="mb-3" style="text-align: left">
+        <div class="mb-3 alinhamento-esquerda">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" id="nome" name="nome" class="form-control" value="{{ $paciente->nome ?? old('nome')}}">
             <div class="text-danger">{{ $errors->has('nome') ? $errors->first('nome') : ''}}</div>
         </div>
-        <div class="row mb-3" style="text-align: left">
+        <div class="row mb-3 alinhamento-esquerda">
             <div class="col-md-6">
                 <label for="data_nascimento" class="form-label">Data de Nascimento</label>
                 <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" value="{{ $paciente->data_nascimento ?? old('data_nascimento') }}">
@@ -32,7 +32,7 @@
                 <div class="text-danger">{{ $errors->has('nome_responsavel') ? $errors->first('nome_responsavel') : ''}}</div>
             </div>
         </div>
-        <div class="row mb-3" style="text-align: left">
+        <div class="row mb-3 alinhamento-esquerda">
             <div class="col-md-6">
                 <label for="email" class="form-label">E-mail</label>
                 <input type="email" id="email" name="email" class="form-control" value="{{ $paciente->email ?? old('email')}}">
@@ -44,7 +44,7 @@
                 <div class="text-danger">{{ $errors->has('telefone') ? $errors->first('telefone') : ''}}</div>
             </div>
         </div>
-        <div class="row mb-3" style="text-align: left">
+        <div class="row mb-3 alinhamento-esquerda">
             <div class="col-md-4">
                 <label for="cep" class="form-label">CEP</label>
                 <input type="text" name="cep" maxlength="8" class="form-control" value="{{ $paciente->cep ?? old('cep')}}">

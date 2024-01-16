@@ -235,10 +235,47 @@ button:hover {
 }
 
 .card:hover {
-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .card-body {
     font-size: 16px; 
     font-family: 'Arial', sans-serif;
+    text-align: left;
+}
+
+.alinhamento-esquerda {
+    text-align: left;
+}
+
+.altura100 {
+    height: 100%
+}
+
+.alinharesquerda-padding10 {
+    padding: 10px; 
+    text-align: left;
+}
+
+.alinharesquerda-padding8 {
+    padding: 8px; 
+    text-align: left;
+}
+
+.alinhar-tabela {
+    width: 30%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margem {
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.alinhar-centro-div {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 }

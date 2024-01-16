@@ -19,7 +19,7 @@
    </div>
    
    <div class="informacao-pagina">
-      <div style="width: 70%; margin-left: auto; margin-right: auto;">
+      <div class="margem" style="width: 70%;">
         @if(!$especialidades->isEmpty())
             <table border="1" style="width: 100%;" class="table table-hover">
                 <thead>

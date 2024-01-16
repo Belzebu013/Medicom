@@ -23,7 +23,7 @@
          <form method="post" action="{{route('especialidade.store')}}">
             <input type="hidden" name="id" value="{{ $especialidade->id ?? ''}}">
             @csrf
-            <div class="mb-3" style="text-align: left">
+            <div class="mb-3 alinhamento-esquerda">
                <label for="nome" class="form-label">Nome</label>
                <input type="text" name="nome" value="{{ $especialidade->nome ??  old('nome')}}" class="form-control">
             </div>

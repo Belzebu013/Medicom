@@ -19,7 +19,7 @@
    </div>
    
    <div class="informacao-pagina">
-      <div style="width: 30%; margin-left: auto; margin-right: auto;">
+      <div class="alinhar-tabela">
          <form method="post" action="{{route('medico.index')}}">
             @csrf
             <input type="text" name="nome" placeholder="Nome" class="borda-preta">

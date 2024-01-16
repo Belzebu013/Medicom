@@ -24,18 +24,18 @@
             <input type="hidden" name="id" value="{{ $medico->id ?? ''}}">
             @csrf
 
-            <div class="mb-3" style="text-align: left">
+            <div class="mb-3 alinhamento-esquerda">
                <label for="nome" class="form-label">Nome</label>
                <input type="text" name="nome" value="{{ $medico->nome ??  old('nome')}}" class="form-control">
             </div>
                
-            <div class="mb-3" style="text-align: left">
+            <div class="mb-3 alinhamento-esquerda">
                <label for="crm" class="form-label">CRM</label>
                <input type="number" name="crm" value="{{ $medico->crm ?? old('crm')}}" class="form-control">
                <div class="text-danger">{{ $errors->has('crm') ? $errors->first('crm') : ''}}</div>
             </div>
 
-            <div class="mb-3" style="text-align: left">
+            <div class="mb-3 alinhamento-esquerda">
                <label for="especialidade" class="form-label">Especialidade</label>
                <select name="especialidade_id" class="form-control">
                   <option value="" style="text-align: center" disabled selected>-- Selecione a Especialidade --</option>

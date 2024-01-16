@@ -41,11 +41,11 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <div class="form-group" style="padding: 10px; text-align: left;">
+                            <div class="form-group alinharesquerda-padding10">
                                 <label for="crmPesquisa">CRM:</label>
                                 <input type="text" class="form-control" id="crmPesquisa" placeholder="Digite o CRM">
                             </div>
-                            <div class="form-group" style="padding: 10px; text-align: left;">
+                            <div class="form-group alinharesquerda-padding10">
                                 <label for="especialidadePesquisa">Especialidade:</label>
                                 <select name="especialidade_id" class="form-control">
                                     <option value="" style="text-align: center" disabled selected>-- Selecione a Especialidade --</option>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <div class="form-group" style="padding: 10px; text-align: left;">
+                            <div class="form-group alinharesquerda-padding10">
                                 <label for="cpfPesquisa">CPF:</label>
                                 <input type="text" class="form-control" id="cpfPesquisa" placeholder="Digite o CPF" maxlength="11">
                             </div>
@@ -124,21 +124,21 @@
                     @csrf
                     <input type="hidden" class="form-control" id="data_hora_consulta" name="data_hora_consulta">
                     <input type="hidden" class="form-control" id="formsalvar" name="formsalvar">
-                    <div class="form-group" style="padding: 8px; text-align: left">
+                    <div class="form-group alinharesquerda-padding8">
                         <label for="paciente">Paciente:</label>
                         <input type="hidden" class="form-control" id="paciente_id" name="paciente_id">
                         <input type="text" style="text-align: center" class="form-control" id="paciente" readonly>
                     </div>
-                    <div class="form-group ocultar" style="padding: 8px; text-align: left" id="inputMedicoForm">
+                    <div class="form-group ocultar alinharesquerda-padding8" id="inputMedicoForm">
                         <label for="medico">Médico:</label>
                         <input type="hidden" class="form-control" id="medico_id" name="medico_id">
                         <input type="text" style="text-align: center" class="form-control" id="medico" readonly>
                     </div>
-                    <div class="form-group ocultar" style="padding: 8px; text-align: left" id="inputDataAgendamentoForm">
+                    <div class="form-group ocultar alinharesquerda-padding8" id="inputDataAgendamentoForm">
                         <label for="data_agendamento">Data consulta:</label>
                         <input type="text" style="text-align: center" class="form-control" id="data_agendamento" name="data_agendamento" readonly>
                     </div>
-                    <div class="form-group ocultar" style="padding: 8px; text-align: left" id="inputHoraAgendamentoForm">
+                    <div class="form-group ocultar alinharesquerda-padding8" id="inputHoraAgendamentoForm">
                         <label for="hora_agendamento">hora consulta:</label>
                         <input type="text" style="text-align: center" class="form-control" id="hora_agendamento" name="hora_agendamento" readonly>
                     </div>

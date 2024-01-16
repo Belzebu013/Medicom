@@ -19,7 +19,7 @@
    </div>
    
    <div class="informacao-pagina">
-      <div style="width: 50%; margin-left: auto; margin-right: auto;">
+      <div class="margem" style="width: 50%;">
 
         @component('app.paciente._components.form_create_edit')
         @endcomponent

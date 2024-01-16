@@ -18,9 +18,9 @@
       </ul>
    </div>
    
-   <div class="informacao-pagina" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+   <div class="informacao-pagina alinhar-centro-div">
       <div style="width: 400px; margin-top: 30px;">
-         <table border="1" style="text-align: left;" class="table table-hover">
+         <table border="1" class="table table-hover alinhamento-esquerda">
             <tr>
                <td>ID:</td>
                <td>{{ $paciente->id}}</td>
