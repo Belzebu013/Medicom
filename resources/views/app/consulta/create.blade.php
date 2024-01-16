@@ -9,7 +9,7 @@
          <p>Adicionar consulta</p> 
    </div>
 
-   @include('app.layouts._partials.botao_adicionar', ['rota'=>'consulta.index'])
+   @include('app.layouts._partials.botao_voltar', ['rota'=>'consulta.index'])
    
    <div class="informacao-pagina">
       <div class="margem" style="width: 50%;">

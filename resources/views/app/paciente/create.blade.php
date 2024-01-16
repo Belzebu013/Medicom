@@ -9,7 +9,7 @@
          <p>Adicionar Paciente</p> 
    </div>
    
-   @include('app.layouts._partials.botao_adicionar', ['rota'=>'paciente.index'])
+   @include('app.layouts._partials.botao_voltar', ['rota'=>'paciente.index'])
    
    <div class="informacao-pagina">
       <div class="margem" style="width: 50%;">

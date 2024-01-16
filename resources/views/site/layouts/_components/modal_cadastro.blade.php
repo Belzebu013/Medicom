@@ -11,22 +11,28 @@
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="name">
-                        <div style="text-align: center" id="nameMsgError"></div>
+                        <div class="text-danger" style="text-align: center" id="nameMsgError"></div>
                         <label for="email">Email:</label>
                         <input type="text" class="form-control" id="email" name="email">
-                        <div style="text-align: center" id="emailMsgError"></div>
+                        <div class="text-danger" style="text-align: center" id="emailMsgError"></div>
                         <label for="password">Senha:</label>
                         <input type="password" class="form-control" id="password" name="password">
-                        <div style="text-align: center" id="passwordMsgError"></div>
+                        <div class="text-danger" style="text-align: center" id="passwordMsgError"></div>
                     </div>
                     <button type="submit" class="btn btn-dark" onclick="realizarCadastro(event)">Cadastrar</button>
                 </form>
-                <div style="text-align: center;" id="div_mensagem"></div>
+                <div class="text-danger" style="text-align: center;" id="div_mensagem">{{ $errors->has('nome') ? $errors->first('nome') : '' }}</div>
             </div>
         </div>
     </div>
 </div>
 <script>
+    /**
+     * Realiza a validação e cadastro através de uma requisição AJAX.
+     *
+     * @param {Event} event - O evento de submissão do formulário.
+     * @returns {void}
+     */
     function realizarCadastro(event){
         event.preventDefault();
         var erro_form = false;

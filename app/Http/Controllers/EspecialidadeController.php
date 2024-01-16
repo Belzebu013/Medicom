@@ -27,7 +27,7 @@ class EspecialidadeController extends Controller
     public function create()
     {
         $especialidades = Especialidade::get();
-        return view('app.especialidade.adicionar', ['especialidades'=>$especialidades]);
+        return view('app.especialidade.adicionar', ['especialidades'=>$especialidades, 'erro' => 0]);
     }
     
     /**
@@ -39,17 +39,25 @@ class EspecialidadeController extends Controller
     public function store(Request $request)
     {
         $regras = [
-            'nome' => 'required|min:3|max:80',
+            'nome' => 'required|alpha|min:3|max:80',
         ];
 
         $feedback = [
             'required' => 'O campo :attribute deve ser preenchido',
+            'nome.alpha' => 'Campo incorreto',
             'nome.min' => 'minimo de 3 caracteres',
             'nome.max' => 'max de 80 caracteres',
         ];
 
         $request->validate($regras, $feedback);
-        Especialidade::create($request->all());
+
+        $especialidade_existe = Especialidade::Where('nome', 'LIKE', $request->input('nome'))->get();
+        if($especialidade_existe->isEmpty()){
+            Especialidade::create($request->all());
+        }else{
+            $especialidades = Especialidade::get();
+            return view('app.especialidade.adicionar', ['especialidades'=>$especialidades, 'erro' => 1]);
+        }
 
         return redirect()->route('especialidade.index');
     }

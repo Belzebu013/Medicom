@@ -44,7 +44,7 @@
             <div>Nenhum registro cadastrado</div>
         @endif
         @if($erro)
-            <h5>Não é possível excluir o paciente, pois está associado a pelo menos uma consulta</h5>
+            <div class="text-danger">Não é possível excluir o paciente, pois está associado a pelo menos uma consulta</div>
         @endif
       </div>
    </div>

@@ -9,7 +9,7 @@
       <p>Visualizar paciente</p>
    </div>
 
-   @include('app.layouts._partials.botao_adicionar', ['rota'=>'paciente.index'])
+   @include('app.layouts._partials.botao_voltar', ['rota'=>'paciente.index'])
 
    <div class="informacao-pagina alinhar-centro-div">
       <div style="width: 400px; margin-top: 30px;">
@@ -36,17 +36,17 @@
                <td>Data de nascimento:</td>
                <td>{{ \Carbon\Carbon::parse($paciente->data_nascimento)->format('d/m/Y') }}</td>
             </tr>
-               <tr>
-                  <td>Telefone:</td>
-                  <td>{{ $paciente->telefone}}</td>
-               </tr>
-               <tr>
-                  <td>Endereço:</td>
-                  <td>{{ $paciente->endereco}}</td>
-               </tr>
-               <tr>
-                  <td>Cep:</td>
-                  <td>{{ $paciente->cep}}</td>
+            <tr>
+               <td>Telefone:</td>
+               <td>{{ $paciente->telefone}}</td>
+            </tr>
+            <tr>
+               <td>Cep:</td>
+               <td>{{ $paciente->cep}}</td>
+            </tr>
+            <tr>
+               <td>Endereço:</td>
+               <td>{{ $paciente->endereco}}</td>
             </tr>
             <tr>
                <td>Número:</td>

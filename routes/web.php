@@ -82,5 +82,5 @@ Route::middleware(['check.auth'])->prefix('/app')->group(function(){
 * Caso acesse uma rota inexistente ira enviar para login.
 */
 Route::fallback(function () {
-    return redirect()->route('site;login');
+    return redirect()->route('site.login');
 });    

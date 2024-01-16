@@ -9,7 +9,7 @@
       <p>Adicionar Médicos</p>
    </div>
 
-   @include('app.layouts._partials.botao_adicionar', ['rota'=>'paciente.index'])
+   @include('app.layouts._partials.botao_voltar', ['rota'=>'paciente.index'])
 
    <div class="informacao-pagina">
       <div class="container" style="width: 30%;">
@@ -20,6 +20,7 @@
             <div class="mb-3 alinhamento-esquerda">
                <label for="nome" class="form-label">Nome</label>
                <input type="text" name="nome" value="{{ $medico->nome ??  old('nome')}}" class="form-control">
+               <div class="text-danger">{{ $errors->has('nome') ? $errors->first('nome') : ''}}</div>
             </div>
                
             <div class="mb-3 alinhamento-esquerda">
@@ -37,7 +38,9 @@
                   @endforeach
                </select>
             </div>
-
+            @if($erro)
+               <div class="text-danger">CRM ja cadastrado!</div>
+            @endif
             <button type="submit" class="btn btn-dark">Cadastrar</button>
          </form>
       </div>

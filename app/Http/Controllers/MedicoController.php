@@ -29,7 +29,7 @@ class MedicoController extends Controller
     public function create()
     {
         $especialidades = Especialidade::all();
-        return view('app.medico.adicionar', ['especialidades' => $especialidades]);
+        return view('app.medico.adicionar', ['especialidades' => $especialidades, 'erro'=>0]);
     }
     
     /**
@@ -53,12 +53,19 @@ class MedicoController extends Controller
         ];
         
         $request->validate($regras, $feedback);
-        $especialidade = Especialidade::find($request->input('especialidade_id'));
-        Medico::create([
-            'nome' => $request->input('nome'),
-            'crm' => $request->input('crm'),
-            'especialidade_id' => $especialidade->id
-        ]);
+
+        $crm_ja_cadastrado = Medico::where('crm', 'LIKE', $request->input('crm'))->get();
+        if($crm_ja_cadastrado->isEmpty()){
+            $especialidade = Especialidade::find($request->input('especialidade_id'));
+            Medico::create([
+                'nome' => $request->input('nome'),
+                'crm' => $request->input('crm'),
+                'especialidade_id' => $especialidade->id
+            ]);
+        }else{
+            $especialidades = Especialidade::all();
+            return view('app.medico.adicionar', ['especialidades' => $especialidades, 'erro'=>1]);
+        }
 
         return redirect()->route('medico.index');
     }
